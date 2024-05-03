@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/chatus.css' %}">
+{% endblock %}
+
+<div class="d-flex h-100">
+    <div class="chat-rooms h-100 w-25">
+        <div class="rooms m-3">
+            <div class="d-flex justify-content-between">
+                <h3>chat<span class="text-primary">us</span></h3>
+                <button class="btn btn-transparent mb-2"><i class="bi bi-plus-circle-fill text-primary"></i></button>
+            </div>
+
+            <ul class="list-group shadow border-0">
+                {% for room in rooms %}
+                <l1 class="list-group-item">{{room.title}}</l1>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="chat-messages h-100 w-75">
+        <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
+
+        </div>
+        <div class="send-message card m-3 shadow border-0">
+            {% include 'chat/list-messages.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script defer src="{% static 'js/chatus.js' %}"></script>
+{% endblock %}

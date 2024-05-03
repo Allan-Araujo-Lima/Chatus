@@ -1,0 +1,14 @@
+<ul class="list-group list-group-flush">
+    {% for message in object.messages.all %}
+    <l1 class="list-group-item border-button-0">
+        <div class="d-flex justify-content-between">
+            <div class="content">
+                <b>@{{message.user}}</b>: {{message.text}}
+            </div>
+            <div class="time">
+                {{message.created_at}}
+            </div>
+        </div>
+    </l1>
+    {% endfor %}
+</ul>
