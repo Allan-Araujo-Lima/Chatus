@@ -23,10 +23,12 @@
     </div>
     <div class="chat-messages h-100 w-75">
         <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
-
+            {% include 'chat/list-messages.html' %}
         </div>
         <div class="send-message card m-3 shadow border-0">
-            {% include 'chat/list-messages.html' %}
+            <form class="send-message card m-3 shadow border-0">
+                <input type="text" class="form-control" placeholder="Escreva uma mensage">
+            </form>
         </div>
     </div>
 </div>
