@@ -1,6 +1,7 @@
 <ul class="list-group list-group-flush">
+    {% if object.message.cont > 0 %}
     {% for message in object.messages.all %}
-    <l1 class="list-group-item border-button-0">
+    <li class="list-group-item border-button-0">
         <div class="d-flex justify-content-between">
             <div class="content">
                 <b>@{{message.user}}</b>: {{message.text}}
@@ -9,6 +10,9 @@
                 {{message.created_at}}
             </div>
         </div>
-    </l1>
+    </li>
     {% endfor %}
+    {% else %}
+    <p>Nenhuma mensagem enviada...</p>
+    {% endif %}
 </ul>
