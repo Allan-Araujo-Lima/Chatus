@@ -1,5 +1,5 @@
 <ul class="list-group list-group-flush">
-    {% if object.message.cont > 0 %}
+    {% if object %}
     {% for message in object.messages.all %}
     <li class="list-group-item border-button-0">
         <div class="d-flex justify-content-between">
