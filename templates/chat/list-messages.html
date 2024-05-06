@@ -1,5 +1,8 @@
 <ul class="list-group list-group-flush">
-    {% if object %}
+    {% if not object %}
+    <p class="text-center">Selecione uma sala...</p>
+    {% else %}
+    {% if object.messages.count > 0 %}
     {% for message in object.messages.all %}
     <li class="list-group-item border-button-0">
         <div class="d-flex justify-content-between">
@@ -13,6 +16,7 @@
     </li>
     {% endfor %}
     {% else %}
-    <p>Nenhuma mensagem enviada...</p>
+    <p class="text-center">Nenhuma mensagem enviada...</p>
+    {% endif %}
     {% endif %}
 </ul>
