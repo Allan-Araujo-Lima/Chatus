@@ -17,8 +17,10 @@ const getMessages = async (room_id) => {
     setRoomActive(room_id);
 };
 
-const createRoom = async () => {
-
+const createRoom = async (data) => {
+    const reponse = await fetch(`/crete-room`, {
+        method: "POST",
+    });
 };
 
 function mouseOver(room_id) {
@@ -31,3 +33,10 @@ function mouseOut(room_id) {
     document.getElementById(room_id).style.border = '5px solid black';
     console.log('oi');
 };
+
+document.querySelector(".create-room").addEventListener("submit", (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(event.target).entries());
+    console.log(data);
+});
