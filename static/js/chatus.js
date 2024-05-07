@@ -1,3 +1,5 @@
+
+
 const $chatMessages = document.querySelector(".messages");
 
 const setRoomActive = (room_id) => {
@@ -13,6 +15,10 @@ const getMessages = async (room_id) => {
     const html = await response.text();
     $chatMessages.innerHTML = html;
     setRoomActive(room_id);
+};
+
+const createRoom = async () => {
+
 };
 
 function mouseOver(room_id) {
