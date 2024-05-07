@@ -22,7 +22,8 @@ class RoomDetailView(DetailView):
     
 @csrf_exempt
 def CreateRoom(request):
-    if request.method == 'POST':
-        sala = json.loads(request.body)
-        print(sala)
-        return JsonResponse({"success": True, "message": "DEUU TUDO CERTOOO"})
+    data = json.loads(request.body)
+    room = Room.objects.create(user=request.user, title=data['title'],)
+    return render(request, 'chat/room.html', {
+        'room': room,
+    })

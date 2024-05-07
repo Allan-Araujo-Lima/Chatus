@@ -1,5 +1,3 @@
-
-
 const $chatMessages = document.querySelector(".messages");
 
 const setRoomActive = (room_id) => {
@@ -17,26 +15,31 @@ const getMessages = async (room_id) => {
     setRoomActive(room_id);
 };
 
+const getLastRoom = () => {
+    document.querySelector(".list-rooms l1").click();
+};
+
 const createRoom = async (data) => {
-    const reponse = await fetch(`/crete-room`, {
+    const response = await fetch('/create-room', {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": data.csrfmiddlewaretoken,
+        },
+        body: JSON.stringify(data),
     });
+    const html = await response.text();
+    const $listRooms = document.querySelector(".list-rooms");
+    $listRooms.insertAdjacentHTML("afterbegin", html);
+    const modal = bootstrap.Modal.getInstance(document.querySelector(".modal"));
+    modal.hide();
+    document.querySelector(".create-room").reset();
+    getLastRoom();
 };
 
-function mouseOver(room_id) {
-    document.getElementById(room_id).style.border = '15px solid green';
-    console.log('oi');
-};
-
-function mouseOut(room_id) {
-    document.querySelectorAll(".list-rooms li")
-    document.getElementById(room_id).style.border = '5px solid black';
-    console.log('oi');
-};
-
-document.querySelector(".create-room").addEventListener("submit", (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.target).entries());
-    console.log(data);
+document.querySelector(".create-room").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    createRoom(data);
 });
+getLastRoom();
