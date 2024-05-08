@@ -25,9 +25,7 @@
             {% include 'chat/list-messages.html' %}
         </div>
         <div class="send-message card m-3 shadow border-0">
-            <form class="send-message card m-3 shadow border-0">
-                <input type="text" class="form-control" placeholder="Escreva uma mensage">
-            </form>
+            {% include 'chat/send-message.html' %}
         </div>
     </div>
     <script type="text/javascript" defer src="../../static/js/chatus.js"></script>

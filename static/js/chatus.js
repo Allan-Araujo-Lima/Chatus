@@ -43,3 +43,14 @@ document.querySelector(".create-room").addEventListener("submit", (e) => {
     createRoom(data);
 });
 getLastRoom();
+
+const sendMessage = async (data) => {
+
+};
+
+document.querySelector(".send-message").addEventListener("submit", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    console.log(data);
+});
