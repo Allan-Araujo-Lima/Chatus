@@ -1,4 +1,5 @@
 <form class="send-message card m-3 shadow border-0">
     {% csrf_token %}
-    <input type="text" class="form-control" placeholder="Escreva uma mensage">
+    <input type="hidden" name="room_id" id="seleced-room">
+    <input type="text" class="form-control" name="text" placeholder="Escreva uma mensage">
 </form>

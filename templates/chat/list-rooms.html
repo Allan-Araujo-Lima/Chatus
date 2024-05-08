@@ -1,4 +1,3 @@
 {% for room in rooms %}
-<li role="button" class="list-group-item" id="room-{{room.id}}" onmouseover="mouseOver('{{room.id}}')"
-    onmouseout="mouseOut('{{room.id}}')" onclick="getMessages('{{room.id}}')">{{room.title}}</li>
+<li role="button" class="list-group-item" id="room-{{room.id}}" onclick="getMessages('{{room.id}}')">{{room.title}}</li>
 {% endfor %}

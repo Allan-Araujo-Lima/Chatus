@@ -28,9 +28,11 @@ def CreateRoom(request):
         'room': room,
     })
     
-def CreateMessage(request):
+def SendMessage(request, pk):
     data = json.loads(request.body)
-    message = Message.objects.create(user=request.user, title=data['message'],)
-    return render(request, 'chat/message.html', {
+    room = Room.objects.get(id=pk)
+    message = Message.objects.create(user=request.user, text=data['text'],)
+    room.messages.add(message)
+    return render(request, 'chat/send-message.html', {
         'message': message,
     })

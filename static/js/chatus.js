@@ -16,7 +16,7 @@ const getMessages = async (room_id) => {
 };
 
 const getLastRoom = () => {
-    document.querySelector(".list-rooms l1").click();
+    document.querySelector('.list-rooms li').click();
 };
 
 const createRoom = async (data) => {
@@ -37,20 +37,31 @@ const createRoom = async (data) => {
     getLastRoom();
 };
 
+const sendMessage = async (data) => {
+    const response = await fetch(`/${data.room_id}/send-message`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": data.csrfmiddlewaretoken,
+        },
+        body: JSON.stringify(data)
+    });
+    const html = await response.text();
+    const $sendMessage = document.querySelector(".send-message");
+    $sendMessage.insertAdjacentHTML("beforeend", html);
+    document.querySelector(".send-message").reset();
+};
+
 document.querySelector(".create-room").addEventListener("submit", (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
     createRoom(data);
 });
-getLastRoom();
-
-const sendMessage = async (data) => {
-
-};
 
 document.querySelector(".send-message").addEventListener("submit", (e) => {
     e.preventDefault();
-    e.stopPropagation();
     const data = Object.fromEntries(new FormData(e.target).entries());
-    console.log(data);
+    sendMessage(data);
 });
+
+getLastRoom();

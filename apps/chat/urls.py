@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('<int:pk>/', views.RoomDetailView.as_view(), name="room_detail"),
     path('create-room', views.CreateRoom, name="create_room"),
+    path('<pk>/send-message', views.SendMessage, name="send_message"),
 ]
