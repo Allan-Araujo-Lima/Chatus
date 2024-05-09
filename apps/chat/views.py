@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Message, Room
 from django.views.generic.detail import DetailView
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Room
@@ -18,6 +18,7 @@ class RoomDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print("Contexo", context)
         return context
     
 @csrf_exempt
@@ -31,8 +32,7 @@ def CreateRoom(request):
 def SendMessage(request, pk):
     data = json.loads(request.body)
     room = Room.objects.get(id=pk)
+    print("essa é a room", room)
     message = Message.objects.create(user=request.user, text=data['text'],)
     room.messages.add(message)
-    return render(request, 'chat/send-message.html', {
-        'message': message,
-    })
+    return HttpResponse(status=204)

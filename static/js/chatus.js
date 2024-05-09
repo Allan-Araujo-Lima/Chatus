@@ -13,6 +13,8 @@ const getMessages = async (room_id) => {
     const html = await response.text();
     $chatMessages.innerHTML = html;
     setRoomActive(room_id);
+    document.getElementById('selected-room').value = room_id;
+
 };
 
 const getLastRoom = () => {
@@ -46,10 +48,8 @@ const sendMessage = async (data) => {
         },
         body: JSON.stringify(data)
     });
-    const html = await response.text();
-    const $sendMessage = document.querySelector(".send-message");
-    $sendMessage.insertAdjacentHTML("beforeend", html);
-    document.querySelector(".send-message").reset();
+    await getMessages(data.room_id)
+    document.querySelector(".input-send-message").value = "";
 };
 
 document.querySelector(".create-room").addEventListener("submit", (e) => {
@@ -62,6 +62,6 @@ document.querySelector(".send-message").addEventListener("submit", (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
     sendMessage(data);
-});
+})
 
 getLastRoom();
