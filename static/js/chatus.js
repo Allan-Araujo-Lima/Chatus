@@ -52,6 +52,17 @@ const sendMessage = async (data) => {
     document.querySelector(".input-send-message").value = "";
 };
 
+const deleteRoom = async (room_id, csrf) => {
+    const response = await fetch(`/${room_id}/delete-room`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrf
+        },
+    });
+    window.location.href = '/';
+};
+
 document.querySelector(".create-room").addEventListener("submit", (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());

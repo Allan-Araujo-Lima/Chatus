@@ -2,3 +2,13 @@ html,
 body {
     height: 100%;
 }
+
+.icon-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-delete {
+    background-color: transparent;
+    border: none;
+}

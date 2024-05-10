@@ -18,7 +18,6 @@ class RoomDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print("Contexo", context)
         return context
     
 @csrf_exempt
@@ -32,7 +31,11 @@ def CreateRoom(request):
 def SendMessage(request, pk):
     data = json.loads(request.body)
     room = Room.objects.get(id=pk)
-    print("essa é a room", room)
     message = Message.objects.create(user=request.user, text=data['text'],)
     room.messages.add(message)
     return HttpResponse(status=204)
+
+def DeleteRoom(request, pk):
+    Room.objects.get(id=pk).delete()
+    return HttpResponse(status=200)
+    

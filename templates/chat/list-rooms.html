@@ -1,3 +1,11 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/chatus.css' %}">
+{% endblock %}
+
 {% for room in rooms %}
-<li role="button" class="list-group-item" id="room-{{room.id}}" onclick="getMessages('{{room.id}}')">{{room.title}}</li>
+<li role="button" class="list-group-item icon-right" id="room-{{room.id}}" onclick="getMessages('{{room.id}}')">
+    {{room.title}}
+    <button class="bi bi-trash3 btn-delete" onclick="deleteRoom('{{room.id}}', '{{csrf_token}}')"></button>
+</li>
 {% endfor %}
