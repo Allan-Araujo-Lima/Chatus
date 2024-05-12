@@ -1,5 +1,9 @@
 <form class="send-message card m-3 shadow border-0">
     {% csrf_token %}
     <input type="hidden" name="room_id" id="selected-room">
-    <input type="text" class="form-control input-send-message" name="text" placeholder="Escreva uma mensage">
+    <div class="d-flex p-2">
+        <input type="text" class="form-control input-send-message" name="text" placeholder="Escreva uma mensage"
+            style="border-color: #383d3f !important;">
+        <button type="submit" class="bi bi-send btn-send" style="border-color: #383d3f !important;"></button>
+    </div>
 </form>
