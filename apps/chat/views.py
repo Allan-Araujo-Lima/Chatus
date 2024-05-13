@@ -4,14 +4,17 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import Room
+from .models import Room, User
 
 def home(request):
     rooms = Room.objects.all().order_by('-created_at')
     return render(request, 'chat/home.html', {
         'rooms': rooms,
     })
-
+    
+def login(request):
+    return render(request, 'chat/login.html')
+    
 class RoomDetailView(DetailView):
     model = Room
     template_name = 'chat/list-messages.html'
@@ -38,4 +41,9 @@ def SendMessage(request, pk):
 def DeleteRoom(request, pk):
     Room.objects.get(id=pk).delete()
     return HttpResponse(status=200)
-    
+
+@csrf_exempt
+def CreateUser(request):
+    data = json.loads(request.body)
+    user = User.objects.create(first_name=data['first_name'], last_name=data['last_name'], email=data['email'], password=data['password']).save()
+    return HttpResponse(status=201)
