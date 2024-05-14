@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/register-user.css' %}">
+{% endblock %}
+
+<div class="enter-content">
+    <div class="transition"></div>
+    <div class="d-flex justify-content-between">
+        <h1 style="font-size: 60px;">chat<span class="text-primary">us</span></h1>
+    </div>
+    <form class="container-register">
+        <div class="form-item">
+            <label for="register-name">Nome</label>
+            <input name="first_name" type="text" class="form-control" required placeholder="Digite seu nome"
+                id="register-name" min="3">
+        </div>
+        <div class="form-item">
+            <label for="register-lastname">Sobrenome</label>
+            <input name="last_name" type="text" class="form-control" required placeholder="Digite seu sobrenome"
+                id="register-lastname" min="3">
+        </div>
+        <div class="form-item">
+            <label class="email" for="register-email">E-mail</label>
+            <input name="email" type="email" required class="email form-control" placeholder="Digite seu email"
+                id="register-email">
+        </div>
+        <div class="form-item">
+            <label class="password" for="register-password">Senha</label>
+            <input name="password" type="password" required class="password form-control" placeholder="Digite sua senha"
+                id="register-password" min="8">
+        </div>
+        <div class="form-item">
+            <label class="password" for="register-password">Confirme sua senha</label>
+            <input name="password-confirmation" type="password" required class="password form-control"
+                placeholder="Confirme sua senha" id="register-password-confirmation" min="8">
+        </div>
+        <div class="register-container">
+            <button class="register-btn btn btn-primary" id="register-btn">Registrar</button>
+        </div>
+    </form>
+    <script type="text/javascript" defer src="../../static/js/register-user.js"></script>
+</div>
+{% endblock %}

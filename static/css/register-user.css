@@ -1,4 +1,4 @@
-.container-login {
+.container-register {
     display: flex;
     flex-direction: column;
     max-width: 460px;
@@ -6,7 +6,7 @@
     padding: 30px;
     background-color: #394867;
     border-radius: 20px;
-    box-shadow: #00000036 6px 7px 4px;
+    box-shadow: 6px 7px 4px #3c475a;
     margin-top: 10px;
 }
 
@@ -20,14 +20,14 @@
     position: relative;
 }
 
-.login-container {
+.register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
 }
 
-.login-container>button {
+.register-container>button {
     width: 100%;
     height: 40px;
 }
@@ -58,13 +58,13 @@
 
 .transition.effect {
     z-index: 1;
-    animation-name: login-transition;
+    animation-name: register-transition;
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }
 
-@keyframes login-transition {
+@keyframes register-transition {
     from {
         background-color: transparent;
     }

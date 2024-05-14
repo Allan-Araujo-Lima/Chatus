@@ -75,6 +75,4 @@ document.querySelector(".send-message").addEventListener("submit", (e) => {
     sendMessage(data);
 })
 
-
-
 getLastRoom();

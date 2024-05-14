@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Room, User
+from .password import hash_password 
 
 def home(request):
     rooms = Room.objects.all().order_by('-created_at')
@@ -14,6 +15,9 @@ def home(request):
     
 def login(request):
     return render(request, 'chat/login.html')
+
+def register(request):
+    return render(request, 'chat/register-user.html')
     
 class RoomDetailView(DetailView):
     model = Room
@@ -45,5 +49,7 @@ def DeleteRoom(request, pk):
 @csrf_exempt
 def CreateUser(request):
     data = json.loads(request.body)
-    user = User.objects.create(first_name=data['first_name'], last_name=data['last_name'], email=data['email'], password=data['password']).save()
+    password = hash_password(data['password'])
+    print(password, 'password')
+    user = User.objects.create(first_name=data['first_name'], last_name=data['last_name'], email=data['email'], password=password).save()
     return HttpResponse(status=201)
