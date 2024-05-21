@@ -60,7 +60,7 @@ const deleteRoom = async (room_id, csrf) => {
             "X-CSRFToken": csrf
         },
     });
-    window.location.href = '/';
+    window.location.href = '/home';
 };
 
 document.querySelector(".create-room").addEventListener("submit", (e) => {

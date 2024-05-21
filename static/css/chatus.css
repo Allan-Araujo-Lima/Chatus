@@ -42,3 +42,14 @@ body {
     outline-color: initial;
     box-shadow: #3c4042 0px 0px 0px 0.10rem;
 }
+
+.logout-div {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+}
+
+.logout-btn {
+    margin-top: 5px;
+    margin-right: 5px;
+}

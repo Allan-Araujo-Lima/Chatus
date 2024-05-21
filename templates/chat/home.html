@@ -20,6 +20,9 @@
         </div>
     </div>
     <div class="chat-messages h-100 w-75">
+        <div class="logout-div">
+            <a href="{% url 'logout' %}" class="btn btn-outline-secondary logout-btn">Logout</a>
+        </div>
         <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
             {% include 'chat/list-messages.html' %}
         </div>

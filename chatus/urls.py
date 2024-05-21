@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('', include('apps.chat.urls')),
     path('admin/', admin.site.urls),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('login/', include('apps.chat.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

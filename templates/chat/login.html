@@ -12,13 +12,15 @@
         <h1 style="font-size: 60px;">chat<span class="text-primary">us</span></h1>
     </div>
     <form class="container-login">
+        {% csrf_token %}
         <div class="form-item">
             <label class="email" for="login-email">E-mail</label>
-            <input type="email" class="email form-control" placeholder="Digite seu email" id="login-email">
+            <input name="email" type="email" class="email form-control" placeholder="Digite seu email" id="login-email">
         </div>
         <div class="form-item">
             <label class="password" for="login-password">Senha</label>
-            <input type="password" class="password form-control" placeholder="Digite sua senha" id="login-password">
+            <input name="password" type="password" class="password form-control" placeholder="Digite sua senha"
+                id="login-password">
         </div>
         <div class="login-container">
             <button class="login-btn btn btn-primary" id="login-btn" type="submit">Entrar</button>

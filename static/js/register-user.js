@@ -11,7 +11,7 @@ async function registerUser(data) {
     });
     alert("Sussusususucesso");
     document.startViewTransition(() => {
-        location.href = "/login"
+        location.href = "/"
     });
 }
 document.querySelector(".container-register").addEventListener("submit", (e) => {
