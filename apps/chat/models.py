@@ -15,7 +15,7 @@ class Room(models.Model):
     title = models.CharField(max_length=200)
     messages = models.ManyToManyField('Message', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    room_users = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='rooms') 
+    # room_users = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='rooms') 
     
     def __str__(self):
         return self.title
